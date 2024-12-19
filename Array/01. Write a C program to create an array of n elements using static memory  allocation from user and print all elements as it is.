@@ -5,7 +5,7 @@ void main()
 {
     int i, n;
     int i_arr[100];
-    printf("How Many Elements To Entered Inside 	Array : ");
+    printf("How Many Elements To Entered Inside Array : ");
     scanf("%d", &n);
 
     // Taking Input Into Array
