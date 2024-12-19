@@ -1,0 +1,44 @@
+30.Write a C program to print all Armstrong numbers between 1 to n. 
+#include <stdio.h>  
+void main()
+{
+    int n, digit, sum, original, temp;
+    int current;
+    int cube = 1;
+    int count = 0;
+    // sum = 0;  
+    // int i=1;  
+
+    printf("enter the number \n");
+    scanf_s("%d", &n);
+
+    original = n;
+    temp = n;
+    while (temp != 0)
+      {
+          count++;
+          temp = temp / 10;
+      }
+      for (int i = 1; i <= n; i++)
+      {
+          original = i;
+          current = i;
+          sum = 0;
+          while (current != 0)
+          {
+              digit = current % 10;
+              cube = 1;
+              for (int j = 1; j <= count; j++)
+              {
+                  cube = cube * digit;
+              }
+              sum += cube;
+              current = current / 10;
+                }
+                if (sum == original)
+                {
+              printf("%d is armstrong number \n", original);
+          }
+    }
+}
+
