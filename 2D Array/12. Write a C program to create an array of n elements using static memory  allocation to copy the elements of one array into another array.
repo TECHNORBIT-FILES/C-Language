@@ -1,0 +1,28 @@
+//12. Write a C program to create an array of n elements using static memory  allocation to copy the elements of one array into another array.
+#include<stdio.h>
+void main()
+{ 
+    int n,i; 
+    int a[100];
+    int b[100];
+    
+    printf("Enter how many elements:\n"); 
+    scanf("%d",&n); 
+    printf("Enter value of elements:\n");
+    
+    for(i=0;i<n;i++)
+        {
+             printf("a[%d]=",i); 
+             scanf("%d",&a[i]);
+        } 
+    
+     for(i=0;i<n;i++) 
+        { 
+             b[i]=a[i];
+        } 
+      printf("Another array is:");
+      for(i=0;i<n;i++) 
+         {
+             printf("%d\t",b[i]);
+         } 
+ }
