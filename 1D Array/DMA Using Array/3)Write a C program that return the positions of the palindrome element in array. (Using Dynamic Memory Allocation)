@@ -1,0 +1,42 @@
+//3)Write a C program that return the positions of the palindrome element in array. (Using Dynamic Memory Allocation)
+#include<stdio.h> 
+#include<conio.h> 
+#include<stdlib.h>
+
+void main()
+{
+	int* p; int n, i;
+	int temp; //temporary veriable
+	int rvs; // to stored the reverse of element int rmd; //to stored the remainder
+
+	printf("enter how many elements you want to insert : "); 
+	scanf("%d", &n);
+
+	p = (int*)malloc(n * sizeof(int));
+
+	printf("enter array elements\n"); 
+	for (i = 0; i < n; i++)
+	{
+		scanf("%d", p + i);
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		temp = *(p + i);
+		//here we reverse the element rvs = 0;
+		while (temp != 0)
+		{
+			rmd = temp % 10;
+			rvs = rvs * 10 + rmd; temp = temp / 10;
+		}
+
+		// here we check given element is palindrome if it is palindrome print its
+
+			if (*(p + i) == rvs)
+			{
+
+			printf("\npallindrome element %d position at %d index", *(p + i), i);
+			}
+	}
+	getch();
+}
