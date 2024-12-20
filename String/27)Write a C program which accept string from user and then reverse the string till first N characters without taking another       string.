@@ -1,0 +1,38 @@
+/*27)Write a C program which accept string from user and then reverse the string till first N characters without taking another string.
+Eg:
+Input String: India is my country
+Input of N: 8
+Output : m si aidnIy country
+Ans:*/
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+	int i, n, count;
+	char a[100];
+	i = 0;
+	printf("entre first string");
+	fgets(a, sizeof(a), stdin);
+	printf("entre number");
+	scanf_s("%d", &n);
+
+	while (a[i] != '\0')
+	{
+		for (i = n; i >= 0; i--)
+		{
+			printf("%c", a[i]);
+		}
+		i = n + 1;
+		while (a[i] != '\n')
+		{
+			printf("%c", a[i]);
+			i++;
+		}
+		if (a[i] == '\n')
+		{
+			break;
+		}
+	}
+}
+
