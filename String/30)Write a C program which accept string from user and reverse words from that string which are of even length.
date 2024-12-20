@@ -1,0 +1,59 @@
+//30)Write a C program which accept string from user and reverse words from that string which are of even length.
+Eg:
+Input String: India is my country. I love my country.
+Output String: India si ym .yrtnuoc I evol ym . Yrtnuoc
+Ans:
+#include<stdio.h>
+void main()
+{
+    int b, h;
+    int count = 0;
+    int i, k, l, y;
+    char str[100];
+    printf("Enter  string");
+    fgets(str, sizeof(str), stdin);
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        count++;
+    }
+    for (i = count - 2; str[i] == ' '; i--)
+    {
+
+    }
+   for (k = 0; k <= i; k++)
+    {
+        if ((str[k] != ' ') && ((str[k - 1] == ' ') || (k == 0)))
+        {
+            y = k;
+        }
+        if ((str[k] != ' ') && ((str[k + 1] == ' ') || (str[k + 1] == '\n')))
+        {
+            l = k;
+
+            if ((l - y) % 2 == 0)
+            {
+                h = y;
+                while (h <= l)
+                {
+                    printf("%c", str[h]);
+                    h++;
+                }
+            }
+            else
+            {
+                b = l;
+                while (b >= y)
+                {
+                    printf("%c", str[b]);
+                    b--;
+                }
+            }
+        }
+
+        if ((str[k] != ' ') && (str[k + 1] == ' '))
+        {
+            if ((k + 1) < i)
+                printf(" ");
+        }
+    }
+}
