@@ -1,0 +1,32 @@
+//21.Write a program which accept string from user and copy first N characters into some destination string. 
+Eg: 
+Input String: India is my country 
+Input of N: 8 
+Output String: India is
+Ans:
+#include<stdio.h>
+void main()
+{
+	int i, n, j, c;
+	char str1[20], str2[20];
+
+	printf("enter string:");
+	fgets(str1, sizeof(str1), stdin);
+	printf("enter no:");
+	scanf_s("%d", &n);
+
+	for (i = n, j = 0; str1[i] != '\0', str2[j] != '\0'; i++, j++)
+	{
+		for (c = 1; c <= n; c++)
+					{
+      			str2[j] = str1[i];
+      			if ((str2[j] == '\n') || (str1[i] == '\n'))
+      				continue;
+	      	}
+	}
+	for (c = 0; c <= n; c++)
+	{
+		printf("%c", str2[c]);
+	}
+}
+
