@@ -1,0 +1,39 @@
+6)Write a C program to reverse a given string as below.
+Eg:
+Input String: India is my country
+Output String: aidnI si ym yrtnuoc
+Ans:
+#include<stdio.h>
+void main()
+{
+	int count = 0;
+	int i, k, l, y;
+	char str[100];
+	printf("Enter string");
+	fgets(str, sizeof(str), stdin);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		count++;
+	}
+	for (k = 0; k <= i; k++)
+	{
+		if ((str[k] != ' ') && str[k - 1] == ' ')
+		{
+			y = k;
+		}
+		if ((str[k] != ' ') && ((str[k + 1] == ' ') || (str[k + 1] == '\n')))
+		{
+			l = k;
+			while (l >= y)
+			{
+				printf("%c", str[l]);
+				l--;
+			}
+		}
+		if ((str[k] != ' ') && (str[k + 1] == ' '))
+		{
+			if ((k + 1) < i)
+				printf(" ");
+		}
+	}
+}
