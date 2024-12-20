@@ -1,0 +1,21 @@
+//4)Write a C program to accept string and print it in the reverse  order.
+Eg:
+Input String: India is my country
+Output String: yrtnuoc ym si aidnI
+Ans:
+#include<stdio.h>
+void main()
+{
+	int i = 0, count = 0;
+	char str[20];
+	printf("enter the string:");
+	fgets(str, sizeof(str), stdin);
+	while (str[count] != '\0')
+	{
+		count++;
+	}
+	for (i = count; i >= 0; i--)
+	{
+		printf("%c", str[i]);
+	}
+}
