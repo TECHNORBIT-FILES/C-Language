@@ -5,9 +5,12 @@ void main()
 {
 	int* p = NULL;
 	int i, n, c = 0;
+
 	printf("how many element you want : ");
 	scanf_s("%d", &n);
+
 	p = (int*)malloc(n * sizeof(int));
+
 	printf("enter the array element");
 	for (i = 0; i < n; i++)
 	{
