@@ -1,0 +1,24 @@
+//17.Write a C program to convert the string from upper case to lower case. 
+Eg: 
+Input String: India Is My Country 
+Output String: india is my country
+Ans:
+#include<stdio.h>
+void main()
+{
+    char str[100];
+    int i=0;
+
+    printf("Enter the string:\n");
+    fgets(str,sizeof(str),stdin);
+
+    while(str[i]!='\0')
+    {
+        if(str[i]>='A' && str[i]<='Z')
+        {
+            printf("%s",str[i]+32);
+	          i++;
+        }
+        i++;
+    }
+}
