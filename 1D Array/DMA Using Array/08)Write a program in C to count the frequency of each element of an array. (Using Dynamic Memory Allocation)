@@ -1,0 +1,40 @@
+//08)Write a program in C to count the frequency of each element of an array. (Using Dynamic Memory Allocation)
+
+#include <stdio.h>
+#include <conio.h>
+// fequency of element in array
+void main()
+{
+	int arr[10];
+	int i, j, count, flag, k;
+	printf("Enter Array Elements :");
+	for (i = 0; i < 10; i++) // store array element
+	{
+		scanf("%d", &arr[i]);
+	}
+	for (i = 0; i < 10; i++)//print array
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\nfrequency of element :");
+	for (i = 0; i < 10; i++) // to find unique element
+	{
+		count = 0;
+		flag = 0;
+		for (j = 0; j < 10; j++)
+		{
+			if (arr[i] == arr[j])
+			{
+				count++; // count inc if reped ele retirved
+			}
+		}
+		for (k = i - 1; k >= 0; k--) // to find ele already exists
+		{
+			if (arr[k] == arr[i])
+				flag = 1; // if exist then
+		}
+		if (flag == 0)
+			printf("\n %d - %d", arr[i], count);
+	}
+	getch();
+}
