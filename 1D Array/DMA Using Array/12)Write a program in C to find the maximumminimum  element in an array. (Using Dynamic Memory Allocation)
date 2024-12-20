@@ -1,0 +1,29 @@
+12)Write a program in C to find the maximumminimum  element in an array. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int* p = NULL;
+	int i, n, max = 0, min = 0;
+	printf("enter the number of element you want in array:\t");
+	scanf_s("%d", &n);
+	p = (int*)malloc(n * sizeof(int));
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", (p + i));
+	}
+	min = *(p);
+	for (i = 0; i < n; i++)
+	{
+		if (max < *(p + i))
+		{
+			max = *(p + i);
+		}
+		if (min > *(p + i))
+		{
+			min = *(p + i);
+		}
+	}
+	printf("the max elemnt in array =%d\n", max);
+	printf("the min elemnt in array =%d\n", min);
+}
