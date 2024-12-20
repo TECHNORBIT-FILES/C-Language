@@ -1,0 +1,14 @@
+//03)Write a C program to print count number of characters in given string.
+#include<stdio.h>
+void main()
+{
+	int i = 0;
+	char str[20];
+	printf("enter the string:");
+	fgets(str, sizeof(str), stdin);
+	while (str[i] != '\n')
+	{
+		i++;
+	}
+	printf("%d", i);
+}
