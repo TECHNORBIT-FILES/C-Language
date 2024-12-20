@@ -1,0 +1,35 @@
+//24)Write a C program which accept two strings from user and  append N characters of second string after first string. 
+Eg:
+Input String: India Country
+Input of N: 4
+Output String: IndiaCoun
+Ans:
+#include <stdio.h>
+int main()
+{
+	int i = 0, j = 0, n;
+	char str1[100], str2[100];
+	printf("enter first string:");
+	fgets(str1, sizeof(str1), stdin);
+	printf("enter second string:");
+	fgets(str2, sizeof(str2), stdin);
+	printf("enter no:");
+	scanf_s("%d", &n);
+	char str3[100];
+	printf("\nFirst string: %s", str1);
+	printf("\nSecond string: %s", str2);
+	while (str1[i] != '\0') {
+		str3[j] = str1[i];
+		i++;
+		j++;
+	}
+	i = 0;
+	while (str2[i] != '\0' && i != n) {
+		str3[j] = str2[i];
+		i++;
+		j++;
+	}
+	str3[j] = '\0';
+	printf("\nConcatenated string: %s", str3);
+	return 0;
+}
