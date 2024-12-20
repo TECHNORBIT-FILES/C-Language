@@ -1,0 +1,32 @@
+//08. Write a C program to create an array of n elements using static memory allocation from user to count the number of elements less than, greater than and equal to zero. 
+#include<stdio.h>
+void main()
+{
+    int i, n, gcount = 0, lcount = 0, ecount = 0;
+    int i_arr[100];
+
+    printf("How Many Element To Be Entered 	Inside Array : ");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &i_arr[i]);
+    }
+    // Greater Then Zero Code
+    for(i = 0; i < n; i++)
+    {
+        if(i_arr[i] > 0)
+        {
+            gcount++;
+        }
+    }
+    // Less Then Zero Code
+
+    for(i = 0; i < n; i++)
+    {
+        if(i_arr[i] < 0)
+        {
+            lcount++;
+        }
+    }
+}
