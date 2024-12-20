@@ -1,0 +1,28 @@
+//16.which accept sentence from user and position from  user and print the word at that position. 
+Eg: 
+Input String: India is my country 
+Input Position: 3 
+Output String: my
+Ans:
+#include<stdio.h>
+void main()
+{
+    char str[100];
+    int i=0,pos,count;
+
+    printf("Enter the string:\n");
+    fgets(str,sizeof(str),stdin);
+    printf("Enter the position:\n");
+    scanf("%d",&pos);
+
+    while(str[i]!='\n')
+    {
+        if(str[i]==pos)
+        {
+            count=pos-1;
+            count++;
+        }
+        i++;
+    }    
+    printf("%s",str);
+}
