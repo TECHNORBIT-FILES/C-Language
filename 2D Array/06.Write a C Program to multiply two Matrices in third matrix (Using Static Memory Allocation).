@@ -1,0 +1,68 @@
+06.Write a C Program to multiply two Matrices in third matrix (Using Static Memory Allocation).
+#include<stdio.h>
+void main()
+{
+    int i,j,k;
+    int a[3][3];
+    int b[3][3];
+    int c[3][3];
+    int add=0;
+    printf("Enter elements in a :\n");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+    {
+        scanf("%d",&a[i][j]);
+    }
+    }
+    printf("A matrix:\n");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+    {
+        printf("a[%d][%d]=[%d]\t",i,j,a[i][j]);
+    }
+        printf("\n");
+    }
+    
+    printf("Enter elements in b:\n");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+    {
+        scanf("%d",&b[i][j]);
+    }
+    }
+
+       printf("B matrix:\n");
+       for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+    {
+        printf("b[%d][%d]=[%d]\t",i,j,b[i][j]);
+    }
+        printf("\n");
+    }
+    
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            for(k=0;k<3;k++)
+            {
+                add=add+a[i][k]*b[k][j];
+            }
+               c[i][j]=add;
+        }
+    }
+    printf("Multiplication of matrix A and B:\n");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+             printf("c[%d][%d]=[%d]\t",i,j,c[i][j]);
+        }
+        printf("\n");
+    }
+}
+
