@@ -1,0 +1,46 @@
+//21. Write a C program to create an array of n elements using static memory allocation to Find the two Elements such that their Sum is Closest to given number
+#include<stdio.h>
+void main()
+{
+    int n,arr[100],i,j,sum,num,n1,n2,diff;
+
+    printf("Enter no of elements:\n");
+    scanf("%d",&n);
+
+    printf("Enter value of elements:\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("Enter the value of number:\n");
+    scanf("%d",&num);
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+            {
+            sum=arr[i]+arr[j];
+            if(sum>num)
+            {
+                if(diff>sum-num)
+               { 
+                diff=sum-num;
+                n1=i;
+                n2=j;
+                }
+            }
+            else
+           {
+            if(diff>=num-sum)
+            {
+                 diff=num-sum;
+                 n1=i;
+                 n2=j;
+              }
+           }
+        }
+    }
+    printf("Number one is:%d\n",arr[n1]);
+    printf("number two is:%d\n",arr[n2]);
+
+}
+
