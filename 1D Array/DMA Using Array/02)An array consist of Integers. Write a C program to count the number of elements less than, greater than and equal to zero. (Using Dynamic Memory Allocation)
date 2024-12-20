@@ -1,0 +1,41 @@
+//02)An array consist of Integers. Write a C program to count the number of elements less than, greater than and equal to zero. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int main()
+{
+	int i, n, po = 0, ne = 0, z = 0;
+	int* p = NULL;
+	printf("how many elements u want in an array:");
+	scanf_s("%d ", &n);
+	p = (int*)malloc(n * sizeof(int));
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", p + i);
+	}
+	printf("entered array is:\n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%d\n", *(p + i));
+	}
+	for (i = 0; i < n; i++)
+	{
+		if (*(p + i) > 0)
+		{
+			po++;
+		}
+		else if (*(p + i) < 0)
+		{
+			ne++;
+		}
+		else
+			if (*(p + i) == 0)
+			{
+				z++;
+			}
+	}
+	printf("\n no of elements which is greater than zero is:%d", po);
+	printf("\n no of elements which is smaller than zero is:%d", ne);
+	printf("\n no of elements which is equal to zero is:%d", z);
+	
+}
