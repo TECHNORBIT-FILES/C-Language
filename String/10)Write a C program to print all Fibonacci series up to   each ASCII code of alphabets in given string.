@@ -1,0 +1,29 @@
+//10)Write a C program to print all Fibonacci series up to each ASCII code of alphabets in given string.
+#include<stdio.h>
+void main()
+{
+    char str[100];
+    int i=0;
+
+    printf("Enter the string\n");
+    fgets(str,sizeof(str),stdin);
+
+    int n1=0,n2=1,n3;
+
+    printf("%d",n1);
+    printf("%d",n2);
+
+    while(str[i]!='\n')
+    {
+        while(n3<=str[i])
+        {
+            n3=n1+n2;
+            n1=n2;
+            n2=n3;
+            printf("%d",n3);
+            i++;
+        }
+        i++;
+    }
+}
+
