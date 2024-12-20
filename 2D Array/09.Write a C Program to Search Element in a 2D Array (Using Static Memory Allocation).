@@ -1,0 +1,50 @@
+//09.Write a C Program to Search Element in a 2D Array (Using Static Memory Allocation).
+#include <stdio.h>
+
+void main()
+{
+    int a[3][3];
+    int i, j, searchElement;
+    int found = 0;
+
+    printf("Enter elements in the matrix a (3x3):\n");
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    printf("\nMatrix a:\n");
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            printf("%d\t", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nEnter the element to search: ");
+    scanf("%d", &searchElement);
+
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            if (a[i][j] == searchElement)
+            {
+                printf("Element %d found at position 	a[%d][%d]\n", searchElement, i, j);
+                found = 1;
+                break;
+            }
+        }
+        if (found == 1)
+        {
+            break;
+        }
+    }
+    if (found == 0) {
+        printf("Element %d not found in the matrix.\n",searchElement);
+    }
+}
