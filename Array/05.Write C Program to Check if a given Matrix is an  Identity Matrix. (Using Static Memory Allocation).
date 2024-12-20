@@ -1,0 +1,60 @@
+//05.Write C Program to Check if a given Matrix is an  Identity Matrix. (Using Static Memory Allocation).
+#include <stdio.h> 
+void main()
+{
+	int a[20][20], row, column, flag = 0;
+
+	printf("How many rows you wanted\n");
+	scanf_s("%d", &row);
+	printf("How many column you wanted\n");
+	scanf_s("%d", &column);
+	printf("Enter element\n");
+
+	for (int i = 0; i < row; i++)
+	{
+		for (int j = 0; j < column; j++)
+		{
+			scanf_s("%d", &a[i][j]);
+		}
+	}
+    printf("matrix is as follows\n");
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            printf("%d\t", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            if (i == j)
+            {
+                if (a[i][j] != 1)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+            else
+            {
+                if (a[i][j] != 0)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+        }
+    }
+    if (flag == 0)
+    {
+       printf("Matrix is identity");
+    }
+    else if (flag == 1)
+    {
+        printf("Matrix is not identity");
+    }
+}
