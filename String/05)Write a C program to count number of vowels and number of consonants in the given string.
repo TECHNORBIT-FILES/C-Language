@@ -1,0 +1,29 @@
+//05)Write a C program to count number of vowels and number of consonants in the given string.
+#include<stdio.h>
+void main()
+{
+	char str[20]; int i = 0;
+	int cv = 0, cc = 0;
+	printf("enter the string:");
+	fgets(str, sizeof(str), stdin);
+	printf("%s", str);
+	while (str[i] != '\n')
+	{
+		if ((str[i] == 'a') || (str[i] == 'e') || (str[i] == 'i') || (str[i] == 'o') || 			(str[i] == 'u'))
+		{
+			cv++;
+			i++;
+		}
+		else if (str[i] == ' ')
+		{
+			i++;
+		}
+		else
+		{
+			cc++;
+			i++;
+		}
+	}
+	printf("vowels:%d", cv);
+	printf("consonents:%d", cc);
+}
