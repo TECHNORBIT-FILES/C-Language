@@ -1,0 +1,46 @@
+//08.Write a C Program to find the transpose of a given matrix (Using Static Memory Allocation).
+#include <stdio.h>
+
+void main()
+{
+     int a[3][3], t[3][3];
+     int i, j;
+     printf("Enter elements in matrix a (3x3):\n");
+     for (i = 0; i < 3; i++)
+     {
+          for (j = 0; j < 3; j++)
+          {
+               scanf("%d", &a[i][j]);
+          }
+     }
+
+     printf("\nOriginal Matrix a:\n");
+     for (i = 0; i < 3; i++)
+     {
+          for (j = 0; j < 3; j++)
+          {
+               printf("%d\t", a[i][j]);
+          }
+          printf("\n");
+     }
+
+     for (i = 0; i < 3; i++)
+     {
+          for (j = 0; j < 3; j++)
+          {
+               t[j][i] = a[i][j];
+          }
+     }
+
+     printf("\nTranspose of the Matrix:\n");
+     for (i = 0; i < 3; i++)
+     {
+          for (j = 0; j < 3; j++)
+          {
+               printf("%d\t", t[i][j]);
+          }
+          printf("\n");
+     }
+
+}
+
