@@ -1,4 +1,4 @@
-//08)Write a program which accept sentence from user and print number of words from that sentence.
+//08)Write a C program which accept sentence from user and print number of words from that sentence.
 Eg:
 Input String: 	India	is	my	country	 (Consider _ as space)
 Output: 4
