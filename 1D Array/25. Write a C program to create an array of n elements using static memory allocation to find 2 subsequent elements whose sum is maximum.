@@ -1,0 +1,27 @@
+//25. Write a C program to create an array of n elements using static memory allocation to find 2 subsequent elements whose sum is maximum.
+#include<stdio.h>
+void main()
+{
+    int n,arr[100],i,j,n1,n2,sum,max;
+    printf("Enter no of elements:\n");
+    scanf("%d",&n);
+    printf("Enter value of elements:\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    max=arr[i]+arr[i+1];
+    for(i=0;i<n;i++)
+    {
+        sum=arr[i]+arr[i+1];
+        if(max<sum)
+        {
+            max=sum;
+            n1=i;
+            n2=i+1;
+        }
+    }
+    printf("Number one is:%d",n1);
+    printf("Number two is:%d",n2);
+}
+
