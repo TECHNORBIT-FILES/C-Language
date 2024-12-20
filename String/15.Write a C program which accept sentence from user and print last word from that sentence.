@@ -1,0 +1,50 @@
+//15.Write a C program which accept sentence from user and print last word from that sentence. 
+Eg: 
+Input String: India is my country 
+Output String: country
+Ans:
+#include<stdio.h>
+void main()
+{
+	int i = 0, j = 0;
+	char str[20];
+	int temp = 0;
+	printf("enter string:");
+	fgets(str, sizeof(str), stdin);
+	//printf("%s", str);
+	int count = 0;
+	while (str[i] != '\n')
+	{
+		i++;
+	}
+	int len = i;
+
+	for (j = 0; j < len / 2; j++)
+	{
+		temp = str[j];
+		str[j] = str[len - j - 1];
+		str[len - j - 1] = temp;
+	}
+	printf("%s", str);
+	int k = 0;
+	while (str[k] != ' ') 
+	{
+		k++;
+	}
+	char word[20];
+	for (int p = 0; p < k; p++)
+	{
+		word[p] = str[p];
+	}
+	for (int g = 0; g < k / 2; g++) 
+{
+		temp = word[g];
+		word[g] = word[k - g - 1];
+		word[k - g - 1] = temp;
+	}
+	printf("last word : \n");
+	for (int l = 0; l < k; l++)
+	{
+		printf("%c", word[l]);
+	}
+}
