@@ -1,0 +1,22 @@
+//15)Write a C Program to Print the Alternate Elements in an Array. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int* p = NULL;
+	int i, n;
+
+	printf("how many element you want : ");
+	scanf_s("%d", &n);
+	p = (int*)malloc(n * sizeof(int));
+
+	printf("enter the array element");
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", (p + i));
+	}
+	for (i = 0; i < n; i = i + 2)
+	{
+		printf("%d \t", *(p + i));
+	}
+}
