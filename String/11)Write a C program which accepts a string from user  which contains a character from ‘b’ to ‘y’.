@@ -1,0 +1,23 @@
+//11)Write a C program which accepts a string from user  which
+contains a character from ‘b’ to ‘y’.
+Eg:
+Input String: mn jn kn kazfd
+Output String: mn jn kn k 
+Ans:
+# include<stdio.h>
+void main()
+{
+	int i = 0;
+	char str[20];
+	printf("enter string:");
+	fgets(str, sizeof(str), stdin);
+	printf("%s", str);
+	while (str[i] != '\n')
+	{
+		if ((str[i] != 'a') && (str[i] != 'z'))
+		{
+			printf("%c", str[i]);
+		}
+		i++;
+	}
+}
