@@ -1,0 +1,25 @@
+10.Write C Program to read and print a Matrix, R and C must be input by User. (Using Static Memory Allocation).
+#include <stdio.h>
+void main() 
+{
+     int r, c, a[10][10], i, j;
+
+     printf("enter no of rows:\n");
+     scanf_s("%d", &r);
+     printf("enter no of columns:\n");
+     scanf_s("%d", &c);
+
+     printf("enter matrix:\n");
+     for (i = 0; i < r; i++) {
+          for (j = 0; j < c; j++) {
+               scanf_s("%d", &a[i][j]);
+          }
+     }
+     printf("matrix:\n");
+          for (i = 0; i < r; i++) {
+          for (j = 0; j < c; j++) {
+               printf("%d ", a[i][j]);
+          }
+          printf("\n");
+     }
+}
