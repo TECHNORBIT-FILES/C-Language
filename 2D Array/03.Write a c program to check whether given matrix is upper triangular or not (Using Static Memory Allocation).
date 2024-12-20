@@ -1,0 +1,61 @@
+//03.Write a c program to check whether given matrix is upper triangular or not (Using Static Memory Allocation).
+#include<stdio.h>
+void main()
+{
+    int a[3][3];
+    int b[3][3];
+    int flag=0;
+    int i,j;
+
+    printf("Enter elements in a :\n");
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+    {
+        scanf("%d",&a[i][j]);
+    }
+    }
+    printf("A matrix:\n");
+     for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+    {
+        printf("a[%d][%d]=[%d]\t",i,j,a[i][j]);
+    }
+        printf("\n");
+    }
+    
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            if(i>j)
+            {
+                if(a[i][j]!=0)
+                {
+                    printf("Not upper triangular matrix");
+                    flag=1;
+                    break;
+                }          
+                else
+                 {
+                    if(a[i][j]==0)
+                     {
+                         printf("Not upper triangular matrix\t");
+                         flag=1;
+                         break;
+                     }
+                 }
+            }
+        }
+        if(flag==1)
+            {
+                break;
+            }
+        }
+        if(flag==0)
+        {
+            printf("upper triangular matrix");
+        }
+ }
+
