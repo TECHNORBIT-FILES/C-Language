@@ -1,0 +1,42 @@
+//08)Write a program which accept sentence from user and print number of words from that sentence.
+Eg:
+Input String: 	India	is	my	country	 (Consider _ as space)
+Output: 4
+Ans:
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+	char str[50];
+	int count;
+	int word = 0;
+	int i = 0;
+	printf("Please Enter the string one by one :\n");
+	fgets(str, sizeof(str), stdin);
+
+	while (str[i] != '\n')
+	{
+		count = 0;
+		while (str[i] == ' ')
+		{
+			i++;
+		}
+		while (str[i] != ' ' && str[i] != '\n')
+		{
+			count++;
+			i++;
+		}
+		if (str[i] == ' ' || str[i] == '\n')
+		{
+
+			if (count != 0)
+			{
+				word++;
+
+			}
+
+		}
+	}
+	printf("The Count of word in a string is : %d", word);
+}
