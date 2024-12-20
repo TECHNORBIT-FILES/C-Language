@@ -1,0 +1,25 @@
+//13)Write a program in C to find the second largest element in an array. (Using Dynamic Memory Allocation)
+#include <stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int* p = NULL;
+	int i, j, temp = 0, max = 0, max2 = 0;
+	p = (int*)malloc(6 * sizeof(int));
+	printf("enter value of array element are:\n");
+	for (i = 0; i < 6; i++)
+	{
+		scanf_s("%d", (p + i));
+	}
+	max = *p;
+	printf("array element are:\n");
+	for (i = 1; i < 6; i++)
+	{
+		if (max < *(p + i))
+		{
+			max2 = max;
+			max = *(p + i);
+		}
+	}
+	printf("%d", max2);
+}
