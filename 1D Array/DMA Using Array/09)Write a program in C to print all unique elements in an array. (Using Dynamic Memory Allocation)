@@ -1,0 +1,31 @@
+//09)Write a program in C to print all unique elements in an array. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int* p = NULL;
+	int i, j, c = 0, n, temp = 0;
+	printf("enter the number of element you want in array:\t");
+	scanf_s("%d", &n);
+	p = (int*)malloc(n * sizeof(int));
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", (p + i));
+	}
+	for (i = 0; i < n; i++)
+	{
+		c = 0;
+		for (j = 0; j < n; j++)
+		{
+			if (*(p + i) == *(p + j))
+			{
+				c++;
+			}
+		}
+		if (temp != *(p + i))
+		{
+			temp = *(p + i);
+			printf("%d frequantly repeated %d\n", *(p + i), c);
+		}
+	}
+}
