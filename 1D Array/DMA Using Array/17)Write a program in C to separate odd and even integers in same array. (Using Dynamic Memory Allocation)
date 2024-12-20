@@ -1,0 +1,34 @@
+17)Write a program in C to separate odd and even integers in same array. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int* p = NULL;
+	int i, j, n, temp = 0;
+	printf("enter the number of element you want in array:\t");
+	scanf_s("%d", &n);
+	p = (int*)malloc(n * sizeof(int));
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", (p + i));
+	}
+	i = 0;
+	j = n - 1;
+	while (i != j)
+	{
+		if (*(p + i) % 2 == 0 || *(p + j) % 2 != 0)
+		{
+			temp = *(p + i);
+			*(p + i) = *(p + j);
+			*(p + j) = temp;
+		}
+		i++;
+		j--;
+	}
+	printf("half odd and half even sorted array.\n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%d\t", *(p + i));
+	}
+}
+
