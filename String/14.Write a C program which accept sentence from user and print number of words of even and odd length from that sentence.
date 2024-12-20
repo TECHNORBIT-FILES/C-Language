@@ -1,0 +1,36 @@
+//14.Write a C program which accept sentence from user and print number of words of even and odd length from that sentence. 
+Eg: 
+Input String: India is my country. I love my country. 
+Output : Even: 5 Odd: 2
+Ans:
+#include<stdio.h>
+void main()
+{
+    char str[100];
+    int i=0,even=0,odd=0;
+    int len=0;
+    printf("Enter the string:\n");
+    fgets(str,sizeof(str),stdin);
+    while(str[i]!='\n')
+    {
+        while(str[i]!=' ' && str[i+1]==' ')
+        {
+            len++;
+            if(len%2==0)
+ 	          {
+                even++;
+            }
+            else
+            {
+                odd++;
+            }
+            len=0;
+            i++;
+        }
+        i++;
+    }
+    printf("Even:%d\n",even);
+    printf("Odd:%d\n",odd);
+}
+
+
