@@ -1,0 +1,25 @@
+//18)Write a C program to store squares of the elements in the  same array. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int* p = NULL;
+	int i, n;
+	printf("how many element you want : ");
+	scanf_s("%d", &n);
+	p = (int*)malloc(n * sizeof(int));
+	printf("enter the array element");
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", (p + i));
+	}
+	for (i = 0; i < n; i++)
+	{
+		*(p + i) = (*(p + i)) * (*(p + i));
+	}
+	printf("the square of array element are\n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%d \t", *(p + i));
+	}
+}
