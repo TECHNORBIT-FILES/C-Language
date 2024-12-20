@@ -1,0 +1,32 @@
+//23)Write a C program which accept two strings from user and  append second string after first string.
+Eg:
+Input String: India Country
+Output String: IndiaCountry
+Ans:
+
+#include<stdio.h>
+void main()
+{
+    int i = 0;
+    int k = 0;
+    int l;
+    char ch;
+    char str[100];
+
+    printf("enter 1st string");
+    fgets(str, sizeof(str), stdin);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == '\n')
+            break;
+    }
+    printf("enter 2nd string");
+    fgets(str + i, sizeof(str), stdin);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        printf("%c", str[i]);
+    }
+
+}
