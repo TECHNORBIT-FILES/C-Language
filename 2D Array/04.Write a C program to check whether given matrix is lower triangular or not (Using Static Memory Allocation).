@@ -48,6 +48,6 @@ void main()
         }
         else
         {
-            printf("The matrix is NOT a lower triangular 	matrix.\n");
+            printf("The matrix is NOT a lower triangular matrix.\n");
         }
 }
