@@ -1,0 +1,53 @@
+//04.Write a C program to check whether given matrix is lower triangular or not (Using Static Memory Allocation).
+#include <stdio.h>
+
+void main()
+{
+    int a[3][3];
+    int flag = 0;
+    int i, j;
+
+    printf("Enter elements in matrix a (3x3):\n");
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    printf("\nA matrix:\n");
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            printf("a[%d][%d]=[%d]\t", i, j, a[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        for (j = i + 1; j < 3; j++)
+        {
+            if (a[i][j] != 0)
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 1)
+        {
+            break;
+        }
+    }
+
+    if (flag == 0)
+    {
+        printf("The matrix is a lower triangular matrix.\n");
+    }
+    else
+    {
+        printf("The matrix is NOT a lower triangular 	matrix.\n");
+    }
+}
