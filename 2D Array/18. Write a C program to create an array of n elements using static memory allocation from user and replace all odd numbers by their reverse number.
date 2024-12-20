@@ -1,0 +1,31 @@
+//18. Write a C program to create an array of n elements using static memory allocation from user and replace all odd numbers by their reverse number. 
+#include <stdio.h>
+void main() 
+{
+    int n, i, arr[100], rev = 0, num;
+    
+    printf("Enter how many elements:\n");
+    scanf("%d", &n);
+    
+    printf("Enter value of elements:\n");
+    for (i = 0; i < n; i++) 
+    {
+        scanf("%d", &arr[i]);
+    }
+    printf("Array after replacing odd numbers with their 	reverse:\n");
+    for (i = 0; i < n; i++) 
+    {
+        if (arr[i] % 2 != 0)
+           {
+            int rev = 0;
+            int num = arr[i];
+            while (num != 0) 
+            {
+                rev = rev * 10 + num % 10;
+                num = num / 10;
+            }
+            arr[i] = rev;
+        }
+        printf("%d ", arr[i]);
+    }
+}
