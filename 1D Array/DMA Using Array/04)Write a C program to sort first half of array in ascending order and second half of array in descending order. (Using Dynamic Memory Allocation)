@@ -1,0 +1,58 @@
+//04)Write a C program to sort first half of array in ascending order and second half of array in descending order. (Using Dynamic Memory Allocation)
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int main()
+{
+	int n, i,j,temp =0;
+	int* p = NULL;
+	printf("how many elements u want in array:");
+	scanf_s("%d", &n);
+	p = (int*)malloc(sizeof(int));
+	printf("Please enter an array element : \n");
+	for (i = 0; i < n; i++)
+	{
+		scanf_s("%d", p + i);
+	}
+	printf("The entered array elements is: \n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%d\n", *(p + i));
+	}
+	//logic
+	for (i = 0; i < n / 2; i++)
+	{
+		for (j = i + 1; j < n / 2; j++)
+		{
+			if (*(p + i) > *(p + j))
+			{
+				temp = *(p + i);
+				*(p + i) = *(p + j);
+				*(p + j) = temp;
+			}
+		}
+	}
+	for (i = n / 2; i < n; i++)
+	{
+		for (
+			j
+			=
+			i + 1; j
+			<
+			n; j++)
+		{
+			if (*(p + i) < *(p + j))
+			{
+				temp =
+					*(p + i);
+				*(p + i) = *(p + j);
+				*(p + j) = temp;
+			}
+		}
+	}
+   printf("first half of array in ascending order and second half of array in descending order: \n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%d\n", *(p + i));
+	}
+}
