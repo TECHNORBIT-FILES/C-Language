@@ -1,0 +1,49 @@
+//03)Write a C program to print count number of characters in  given string. (Using Dynamic memory allocation)
+Ans:
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+
+void main()
+{
+	char* str = NULL;
+	char ch;
+	int size = 1;
+	int i = 0;
+	int count = 0;
+
+	str = (char*)malloc(sizeof(char));
+
+	*str = '\0';
+
+	printf("Please Enter the string one by one :\n");
+	do
+	{
+		scanf_s("%c", &ch);
+		size++;
+		if (ch != '\n')
+		{
+			str = (char*)realloc(str, size * sizeof(char));
+			*(str + i) = ch;
+			*(str + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	i = 0;
+	while (*(str + i) != '\0')
+	{
+		while (*(str + i) == ' ')
+		{
+			i++;
+		}
+		if (*(str + i) != ' ')
+		{
+			count++;
+			i++;
+		}
+	}
+
+	printf("The count of character in string is : %d", count);
+	free(str);
+
+	}
