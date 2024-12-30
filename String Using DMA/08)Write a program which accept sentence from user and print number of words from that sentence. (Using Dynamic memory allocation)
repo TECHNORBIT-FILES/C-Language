@@ -1,0 +1,39 @@
+//08)Write a program which accept sentence from user and print number of words from that sentence. (Using Dynamic memory allocation)
+Input String: India_is_my_country
+Output: 4
+Input String: India	is	my	country	 (Consider _ as space)
+Output: 4
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int size = 1, i = 0, count = 0, j = 0;
+	char* str = NULL;
+	char ch;
+	str = (char*)malloc(sizeof(str));
+	*str = '\0';
+	printf("enter string:");
+	do {
+		scanf_s("%c", &ch);
+		if (ch != '\n') {
+			size++;
+			str = realloc(str, size * sizeof(char));
+			*(str + i) = ch;
+			*(str + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	printf("%s", str);
+	i = 0;
+	while (*(str + i) == ' ')
+	{
+		i++;
+	}
+	for (i = 0; i < size - 1; i++)
+	{
+		if (*(str + i) == ' ' && *(str + i + 1) != ' ')
+			count++;
+	}
+	printf("Number of words in given string are: %d\n", count);
+}
