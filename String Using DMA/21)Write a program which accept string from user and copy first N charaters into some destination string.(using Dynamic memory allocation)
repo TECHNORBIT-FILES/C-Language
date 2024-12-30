@@ -1,0 +1,58 @@
+//21)Write a program which accept string from user and copy first N charaters into some destination string.(using Dynamic memory allocation)
+Eg:
+Input String: India is my country Input of N: 8
+Output String: India is
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+    int count = 0;
+    int t, k, g;
+    int i = 0;
+    int size = 2;
+    char ch;
+    char* str = NULL;
+    str = (char*)malloc(sizeof(char));
+    *str = '\0';
+    printf("enter string");
+    do {
+        scanf_s("%c", &ch);
+        if (ch != '\n')
+        {
+            size++;
+            str = (char*)realloc(str, size * sizeof(char));
+            *(str + i) = ch;
+            *(str + i + 1) = '\n';
+            *(str + i + 2) = '\0';
+            i++;
+        }
+    } while (ch != '\n');
+
+    printf("enter upto which charater do you want copy");
+    scanf_s("%d", &g);
+
+    for (t = 0; *(str + t) != '\0'; t++)
+    {
+        count++;
+    }
+    for (t = count - 2; *(str + t) == ' '; t--)
+    {
+
+    }
+
+    for (k = 0; k <= g; k++)
+    {
+
+        if (*(str + k) != ' ')
+        {
+            printf("%c", *(str + k));
+
+        }
+        if ((*(str + k) != ' ') && (*(str + k + 1) == ' '))
+        {
+            if ((k + 1) < t)
+                printf(" ");
+        }
+
+    }
