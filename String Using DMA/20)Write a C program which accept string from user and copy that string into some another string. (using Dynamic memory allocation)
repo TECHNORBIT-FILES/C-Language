@@ -1,0 +1,47 @@
+//20)Write a C program which accept string from user and copy that string into some another string. (using Dynamic memory allocation)
+Ans:
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+
+void main()
+{
+	int i, j, a, no_of_char = 1;
+	char ch;
+	char* str = NULL;
+	char* str1 = NULL;
+
+	str = (char*)malloc(sizeof(char));
+
+	*(str + 0) = '\0';
+	i = 0;
+	printf("Enter a string from user\n");
+
+	do
+	{
+		scanf_s("%c", &ch);
+		if (ch != '\n')
+		{
+			no_of_char++;
+			str = (char*)realloc(str, no_of_char * sizeof(char));
+			*(str + i) = ch;
+			*(str + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+
+	a = i;
+	str1 = (char*)malloc(a * sizeof(char));
+
+	*(str1 + 0) = '\0';
+	j = 0;
+	printf("New string is : \n");
+
+	//copy string
+	for (i = 0; *(str + i) != '\0'; i++)
+	{
+		*(str1 + i) = *(str + i);
+		printf("%c", *(str1 + i));
+	}
+	free(str1);
+}
