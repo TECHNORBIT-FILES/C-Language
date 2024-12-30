@@ -1,0 +1,47 @@
+//22) Write a C program which accept string from user and accept number N then copy last N character into some another string.(using Dynamic memory allocation)
+Eg:
+Input String: India is my country 
+Input of N: 5
+Output String: is my
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	char* str1;
+	char* str2;
+	char ch;
+	int i = 0, j, c, n, size = 1;
+	str1 = (char*)malloc(sizeof(char));
+	*str1 = '\0';
+	printf("enter the string");
+	do {
+		scanf_s("%c", &ch);
+		if (ch != '\n')
+		{
+			size++;
+			str1 = (char*)realloc(str1, size * sizeof(char));
+			*(str1 + i) = ch;
+			*(str1 + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	printf("%s\n", str1);
+	printf("enter the number\n");
+	scanf_s("%d", &n);
+	str2 = (char*)malloc(n * sizeof(char));
+	for (i = n, j = 0; i < size - 1, j < size - 1; i++, j++)
+	{
+		for (c = 1; c <= n; c++)
+		{
+			*(str2 + j) = *(str1 + i);
+			if (*(str2 + j) == '\0' || *(str1 + i) == '\0')
+				continue;
+		}
+	}
+	for (c = 0; c <= n; c++)
+	{
+		printf("%c", str2[c]);
+	}
+} 
+ 
