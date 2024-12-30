@@ -1,0 +1,37 @@
+//18)Write a C program which toggles the case of a string. (using Dynamic memory allocation)
+Eg:
+Input String: technOrbit Infosystems
+Output String: TECHNoRBIT iNFOSYSTEMS
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int size = 1, i = 0, count = 0, j = 0;
+	char* str = NULL;
+	char ch;
+	str = (char*)malloc(sizeof(str));
+	*str = '\0';
+	printf("enter string:");
+	do {
+		scanf_s("%c", &ch);
+		if (ch != '\n') {
+			size++;
+			str = realloc(str, size * sizeof(char));
+			*(str + i) = ch;
+			*(str + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	for (i = 0; i < size - 1; i++)
+	{
+		if ((*(str + i) >= 65) && (*(str + i) <= 90))
+			*(str + i) = *(str + i) + 32;
+		else
+		{
+			if ((*(str + i) >= 90) && (*(str + i) <= 122))
+				*(str + i) = *(str + i) - 32;
+		}
+	}
+	printf("%s\n", str);
+}
