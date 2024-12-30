@@ -1,0 +1,65 @@
+//8) Write a C Program to find the transpose of a given matrix (Using Dynamic Memory Allocation).
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+
+
+void main()
+{
+	int** p = NULL;
+	int** q = NULL;
+	int i, j;
+	int count = 0;
+
+	p = (int**)malloc(3 * sizeof(int*));
+
+	for (i = 0; i < 3; i++)
+	{
+		*(p + i) = (int*)malloc(3 * sizeof(int));
+	}
+
+	printf("Please Enter the  values one by one:\n");
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			scanf_s("%d", *(p + i) + j);
+		}
+	}
+	printf("The  Matrix is as Follows : \n");
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			printf("%d\t", *(*(p + i) + j));
+		}
+		printf("\n");
+	}
+
+	q = (int**)malloc(3 * sizeof(int*));
+
+	for (i = 0; i < 3; i++)
+	{
+		*(q + i) = (int*)malloc(3 * sizeof(int));
+	}
+
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			*(*(q + j) + i) = *(*(p + i) + j);
+		}
+	}
+
+	printf("The Transpose Of Given Matrix is as Follows :\n");
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			printf("%d\t", *(*(q + i) + j));
+		}
+		printf("\n");
+	}
+	free(p);	
+}
