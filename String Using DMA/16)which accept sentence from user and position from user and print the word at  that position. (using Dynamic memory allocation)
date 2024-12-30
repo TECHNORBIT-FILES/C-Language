@@ -1,0 +1,70 @@
+//16)which accept sentence from user and position from user and print the word at  that position. (using Dynamic memory allocation)
+Eg:
+Input String: India is my country 
+Input Position: 3
+Output String: my
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+    int word = 0;
+    int count = 0;
+    int t, k, w, l;
+    int i = 0;
+    int size = 2;
+    char ch;
+    char* str = NULL;
+    str = (char*)malloc(sizeof(char));
+    *str = '\0';
+    printf("enter string");
+    do {
+        scanf_s("%c", &ch);
+        if (ch != '\n')
+        {
+            size++;
+            str = (char*)realloc(str, size * sizeof(char));
+            *(str + i) = ch;
+            *(str + i + 1) = '\n';
+            *(str + i + 2) = '\0';
+            i++;
+        }
+    } while (ch != '\n');
+    printf("enter no of word");
+    scanf_s("%d", &w);
+
+    for (t = 0; *(str + t) != '\0'; t++)
+    {
+
+        count++;
+
+    }
+
+    for (t = count - 2; *(str + t) == ' '; t--)
+    {
+
+    }
+    for (k = 0; k <= t; k++)
+    {
+        if ((*(str + k) != ' ') && ((*(str + k + 1) == ' ') || (*(str + k + 1) == '\n')))
+        {
+            word++;
+            if (word == w)
+            {
+                l = k;
+                while (*(str + l) != ' ')
+                {
+                    l--;
+                    if (l == 0)
+                        break;
+                }
+
+                while (l <= k)
+                {
+                    printf("%c", *(str + l));
+                    l++;
+                }
+            }
+        }
+    }
+}
