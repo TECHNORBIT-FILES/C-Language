@@ -1,0 +1,122 @@
+//06)Write c program to two merge two linked list.
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+};
+struct node* createnode()
+{
+	int a;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf(" memory is not allocated\n");
+		return(NULL);
+	}
+	else
+	{
+		printf(" please enter a data\n");
+		scanf_s("%d", &a);
+		newnode->data = a;
+		newnode->next = NULL;
+		return newnode;
+	}
+} void createlinkedlist1(struct node** head1)
+{
+	struct node* tempnode = NULL;
+	struct node* travnode = *head1;
+	tempnode = createnode();
+	if (*head1 == NULL)
+	{
+		*head1 = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		} travnode->next =
+			tempnode;
+	}
+} void createlinkedlist2(struct node** head2)
+{
+	struct node* tempnode = NULL;
+	tempnode = createnode();
+	struct node* travnode = *head2;
+	if (*head2 == NULL)
+	{
+		*head2 = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		} travnode->next =
+			tempnode;
+	}
+}
+void displaylinkedlist1(struct node* head1)
+{
+	while (head1 != NULL)
+	{
+		printf("%d ", head1->data);
+		head1 = head1->next;
+	}
+} void displaylinkedlist2(struct node* head2)
+{
+	while (head2 != NULL)
+	{
+		printf("%d ", head2->data);
+		head2 = head2->next;
+	}
+} void mergelinkedlist(struct node** head1, struct node** head2)
+{
+	struct node* tempnode = NULL;
+	tempnode = *head1;
+	while (tempnode->next != NULL)
+	{
+		tempnode = tempnode->next;
+	} tempnode->next =*head2;
+	while (tempnode->next != NULL)
+	{
+		tempnode = tempnode->next;
+	} 
+		displaylinkedlist1(*head1);
+}
+ void main()
+{
+	struct node* frst1 = NULL;
+	struct node* frst2 = NULL;
+	int choice;
+	do
+	{
+		printf("\n1.create linked list1\n");
+		printf("2.create linked list2\n");
+		printf("3.display linked list1\n");
+		printf("4.display linked list2\n");
+		printf("5.merge linked list\n");
+		printf("0.exit\n");
+		printf(" please enter your choice\n");
+		scanf_s("%d", &choice);
+		switch (choice)
+		{
+		case 1: createlinkedlist1(&frst1);
+			break;
+		case 2: createlinkedlist2(&frst2);
+			break;
+		case 3: displaylinkedlist1(frst1);
+			break;
+		case 4: displaylinkedlist2(frst2);
+			break;
+		case 5: mergelinkedlist(&frst1, &frst2);
+			break;
+		case 0:exit(0);
+			break;
+		default: printf("enter the valid choice \n");
+		}
+	} while (choice != 0);
+}
