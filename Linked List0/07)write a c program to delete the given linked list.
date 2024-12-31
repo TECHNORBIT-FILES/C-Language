@@ -1,0 +1,88 @@
+//07)write a c program to delete the given linked list.
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+};
+struct node* createnode()
+{
+	int n;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf("memorynot allocated");
+		return NULL;
+	}
+	else
+	{
+		printf("enter data:\n");
+		scanf_s("%d", &n);
+		newnode->data = n;
+		newnode->next = NULL;
+		return(newnode);
+	}
+}
+void createlinkedlist(struct node** head)
+{
+	struct node* tempnode = NULL;
+	struct node* travnode = *head;
+	tempnode = createnode();
+	if (*head == NULL)
+	{
+		*head = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		} travnode->next = tempnode;
+	}
+} void deletelist(struct node** head)
+{
+	struct node* current = *head;
+	struct node* next = NULL;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*head = NULL;
+	printf("\n all list isdeleted");
+} void display(struct node* head)
+{
+	while (head != NULL)
+	{
+		printf("%d ", head->data);
+		head = head->next;
+	}
+}
+void main()
+{
+	struct node* frst = NULL;
+	int ch = 1;
+	do {
+		printf("\n1.create linked list\n2.display linked list\n3.delete\n0.exit\n");
+		printf("enter your choice:");
+		scanf_s("%d", &ch);
+		switch (ch)
+		{
+		case 1:
+			createlinkedlist(&frst);
+			break;
+		case 2:
+			display(frst);
+			break;
+		case 3:
+			deletelist(&frst);
+			break;
+		case 0:
+			printf("exit");
+		}
+	} while (ch != 0);
+}
+
