@@ -1,0 +1,156 @@
+//04)write a c program accept record of 5 students and sort list according to percentage.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct student
+{
+	char name[20];
+	int age;
+	int rollno;
+	float percent;
+};
+struct node
+{
+	struct student data;
+	struct node* next;
+};
+struct node* createnode()
+{
+	char name[20];
+	int age;
+	int rollno;
+	float percent;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf("memory not allocated\n");
+	}
+	else
+	{
+		printf("Enter Name :\n");
+		scanf_s(" ");
+		fgets(name, sizeof(name), stdin);
+		printf("Enter Age :\n");
+		scanf_s("%d", &age);
+		printf("enter rollno :\n");
+		scanf_s("%d", &rollno);
+		printf("enter percentage : \n");
+		scanf_s("%f", &percent);
+		(newnode->data).age = age;
+		(newnode->data).rollno = rollno;
+		(newnode->data).percent = percent;
+		strcpy_s((newnode->data).name, sizeof(name), name);
+		newnode->next = NULL;
+		return newnode;
+	}
+}
+createlinkedlist(struct node** head)
+{
+	struct node* travnode = *head;
+	struct node* tempnode = NULL;
+	tempnode = createnode();
+	if (*head == NULL)
+	{
+		*head = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		}
+		travnode->next = tempnode;
+	}
+}
+displaylinkedlist(struct node* head)
+{
+	if (head == NULL)
+	{
+		printf("list is empty\n");
+	}
+	else
+	{
+		printf("list is :\n");
+		while (head != NULL)
+		{
+		printf("Name : %sAge : %d, roll no %d, Percent : %.2f\n", head -> 				data.name, head->data.age, head->data.rollno, head->data.percent);
+			head = head->next;
+		}
+	}
+}
+sortlinkedlist(struct node** head)
+{
+	if (*head == NULL)
+	{
+		printf("list is empty\n");
+	}
+	else
+	{
+		struct node* travnode = *head;
+		int temproll, tempage;
+		float max;
+		char tempname[20];
+		struct node* trav2 = travnode->next;
+		struct node* temp = NULL;
+		while (travnode != NULL)
+		{
+			max = travnode->data.percent;
+			temp = NULL;
+			trav2 = travnode->next;
+			while (trav2 != NULL)
+			{
+				if (max < trav2->data.percent)
+				{
+					max = trav2->data.percent;
+					temproll = trav2->data.rollno;
+			strcpy_s(tempname, sizeof(tempname), (trav2 -> data).name);
+					tempage = trav2->data.age;
+					temp = trav2;
+				}
+				trav2 = trav2->next;
+			}
+			if (temp != NULL)
+			{
+				temp->data.rollno = travnode->data.rollno;
+				travnode->data.rollno = temproll;
+				temp->data.age = travnode->data.age;
+				travnode->data.age = tempage;
+		strcpy_s((temp->data).name, sizeof(tempname), travnode -> data.name);
+		strcpy_s((travnode->data).name, sizeof(tempname), tempname);
+				temp->data.percent = travnode->data.percent;
+				travnode->data.percent = max;
+			}
+			travnode = travnode->next;
+		}
+	}
+}
+void main()
+{
+	int choice;
+	struct node* first = NULL;
+	do
+	{
+		printf("1 : create linked list\n");
+		printf("2 : display linked list\n");
+		printf("3 : sort students according to percent\n");
+		printf("0 : exit\n");
+		printf("enter your choice :\n");
+		scanf_s("%d", &choice);
+		switch (choice)
+		{
+		case 1: createlinkedlist(&first);
+			break;
+		case 2: displaylinkedlist(first);
+			break;
+		case 3: sortlinkedlist(&first);
+			break;
+		case 0: exit(0);
+			break;
+		default: printf("enter a valid choice\n");
+			break;
+		}
+	} while (choice != 0);
+	
+}
