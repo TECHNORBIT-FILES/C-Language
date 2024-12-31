@@ -1,0 +1,104 @@
+//02)write the c program to create linked list of n nodes and find the given number in linked list.
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+};
+struct node* createnode()
+{
+	int n;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf("memorynot allocated");
+		return NULL;
+	}
+	else
+	{
+		printf("enter data:\n");
+		scanf_s("%d", &n);
+		newnode->data = n;
+		newnode->next = NULL;
+		return(newnode);
+	}
+}
+void createlinkedlist(struct node** head)
+{
+	struct node* tempnode = NULL;
+	struct node* travnode = *head;
+	tempnode = createnode();
+	if (*head == NULL)
+	{
+		*head = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		} travnode->next =tempnode;
+	}
+} void display(struct node* head)
+{
+	while (head != NULL)
+	{
+		printf("%d ", head->data);
+		head = head->next;
+	}
+} void search(struct node* head)
+{
+	struct node* ptr;
+	int item, i = 0, fag;
+	ptr = head;
+	if (ptr == NULL)
+	{
+		printf("\nEmpty List\n");
+	}
+	else
+	{
+		int fag = 1;
+		printf("\nEnter item which you want to search?\n");
+		scanf_s("%d", &item);
+		while (ptr != NULL)
+		{
+			if (ptr->data == item)
+			{
+				printf("item found at location %d ", i + 1);
+				fag = 0;
+			}
+			i++;
+			ptr = ptr->next;
+		}
+		 if (fag == 1)
+		{
+			printf("Item not found\n");
+		}
+	}
+} 
+void main()
+{
+	struct node* frst = NULL;
+	int ch = 1;
+	do {
+		printf("\n1.create linked list\n2.display linked list\n3.searching\n0.exit\n");
+		printf("enter your choice:");
+		scanf_s("%d", &ch);
+		switch (ch)
+		{
+		case 1:
+			createlinkedlist(&frst);
+			break;
+		case 2:
+			display(frst);
+			break;
+		case 3:
+			search(frst);
+			break;
+		case 0:
+			printf("exit");
+		}
+	} while (ch != 0);
+}
