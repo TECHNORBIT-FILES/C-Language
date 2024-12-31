@@ -1,0 +1,398 @@
+//Doubly Linked List Operations
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+	struct node* prev;
+};
+
+struct node* createnode()
+{
+	int val;
+	struct node* node = NULL;
+
+	node = (struct node*)malloc(sizeof(struct node));
+
+	if (node == NULL)
+	{
+		printf("node is not created\n");
+	}
+	else
+	{
+		printf("node is created then entre the value \n");
+		scanf_s("%d", &val);
+
+		node->data = val;
+		node->prev = NULL;
+		node->next = NULL;
+
+	}
+	return (node);
+}
+void create_link_list(struct node** head1, struct node** head2)
+{
+	struct node* temp = NULL;
+	temp = createnode();
+	if (*head1 == NULL && *head2 == NULL)
+	{
+		*head2 = temp;
+		*head1 = temp;
+	}
+
+	else
+	{
+		(*head2)->next = temp;
+		temp->prev = *head2;
+		*head2 = temp;
+	}
+}
+
+void display_forword(struct node* head)
+{
+	if (head == NULL)
+	{
+		printf(" link list is not avilable\n");
+	}
+	else
+	{
+		while (head != NULL)
+		{
+			printf("%d\t=>", head->data);
+			head = head->next;
+		}
+		printf("NULL\n");
+	}
+}
+void display_reverse(struct node* head)
+{
+	if (head == NULL)
+	{
+		printf(" link list is not avilable\n");
+	}
+	else
+	{
+		while (head != NULL)
+		{
+			printf("%d\t=>", head->data);
+			head = head->prev;
+		}
+		printf("NULL\n");
+	}
+}
+
+void  find(struct node* head1, struct node* head2)
+{
+	int k;
+	printf("entre the value which you want to serach\n");
+	scanf_s("%d", &k);
+	if (head1 == NULL && head2 == NULL)
+	{
+		printf(" link list not avilable\n");
+	}
+	else
+	{
+	while (head1->data != k && head2->data != k && head1->prev != head2 &&
+	head1 != head2)
+		{
+			head1 = head1->next;
+			head2 = head2->prev;
+		}
+		if (head1->data == k || head2->data == k)
+		{
+			printf("Numbre is Found\n");
+		}
+		else
+		{
+			printf("numbre is not found\n");
+		}
+	}
+}
+
+void insert_first(struct node** head1, struct node** head2)
+{
+	struct node* tempnode = NULL;
+	tempnode = createnode();
+	if (*head1 == NULL && *head2 == NULL)
+	{
+		*head1 = *head2 = tempnode;
+	}
+	else
+	{
+		tempnode->next = *head1;
+		(*head1)->prev = tempnode;
+		*head1 = tempnode;
+	}
+}
+void insert_last(struct node** head1, struct node** head2)
+{
+	create_link_list(head1, head2);
+}
+int countnode(struct node* head1)
+{
+	int count = 0;
+	if (head1 == NULL)
+	{
+		printf("link list is not avilable");
+	}
+	else
+	{
+		while (head1 != NULL)
+		{
+			count++;
+			head1 = head1->next;
+		}
+	}
+	return(count);
+}
+
+void insert_pos(struct node** head1, struct node** head2)
+{
+	int n = 0;
+	int i;
+	int pos = 0;
+	struct node* temp = NULL;
+	struct node* trans = *head1;
+	printf(" Entre the Position\n");
+	scanf_s("%d", &pos);
+	n = countnode(*head1);
+	if (pos == 1)
+	{
+		insert_first(head1, head2);
+	}
+	else if (pos == n + 1)
+	{
+		insert_last(head1, head2);
+	}
+	else if (pos > n + 1 || pos < 1)
+	{
+		printf("entre the valid position\n");
+		insert_pos(head1, head2);
+	}
+	else
+	{
+		temp = createnode();
+		for (i = 1; i < pos; i++)
+		{
+			trans = trans->next;
+		}
+		temp->next = trans;
+		temp->prev = trans->prev;
+		trans->prev->next = temp;
+		trans->prev = temp;
+	}
+}
+
+void delete_first(struct node** head1, struct node** head2)
+{
+	if (*head1 == NULL && *head2 == NULL)
+	{
+		printf("node is not avilable\n");
+	}
+	else if (*head1 == *head2)
+	{
+		free(*head1);
+		*head1 = NULL;
+		*head2 = NULL;
+	}
+	else
+	{
+		*head1 = (*head1)->next;
+		free((*head1)->prev);
+		(*head1)->prev = NULL;
+	}
+}
+
+void delete_last(struct node** head1, struct node** head2)
+{
+	if (*head1 == NULL && *head2 == NULL)
+	{
+		printf("node is not avilable\n");
+	}
+	else if (*head1 == *head2)
+	{
+		free(*head2);
+		*head1 = NULL;
+		*head2 = NULL;
+	}
+	else
+	{
+		*head2 = (*head2)->prev;
+		free((*head2)->next);
+		(*head2)->next = NULL;
+	}
+}
+void delete_pos(struct node** head1, struct node** head2)
+{
+	int n = 0;
+	int i, pos;
+	struct node* trans = NULL;
+	printf("entre the position\n");
+	scanf_s("%d", &pos);
+	n = countnode(*head1);
+	if (*head1 == NULL && *head2 == NULL)
+	{
+		printf("node is not avilable\n");
+	}
+	else if (*head1 == *head2)
+	{
+		free(*head2);
+		*head1 = NULL;
+		*head2 = NULL;
+	}
+	else if (pos == 1)
+	{
+		delete_first(head1, head2);
+	}
+	else if (n == pos)
+	{
+		delete_last(head1, head2);
+	}
+	else if (pos<1 || pos >n)
+	{
+		printf("Entre the valid position\n");
+		delete_pos(head1, head2);
+	}
+	else
+	{
+		trans = *head1;
+		for (i = 1; i < pos; i++)
+		{
+			trans = trans->next;
+		}
+		trans->prev->next = trans->next;
+		trans->next->prev = trans->prev;
+		free(trans);
+	}
+}
+void swap(struct node** head1, struct node** head2)
+{
+	struct node* temp = NULL;
+	struct node* trans = NULL;
+	trans = *head1;
+	if (head1 == NULL)
+	{
+		printf("linklist is not avilable\n");
+	}
+	else
+	{
+		while (trans != NULL)
+		{
+			temp = trans->next;
+			trans->next = trans->prev;
+			trans->prev = trans->next;
+			trans = temp;
+			temp = NULL;
+		}
+	}
+	temp = *head1;
+	*head1 = *head2;
+	*head2 = temp;
+	temp = NULL;
+}
+
+void bubble_sort(struct node* head1, struct node* head2)
+{
+	int temp;
+	struct node* trans = NULL;
+	struct node* temp2 = NULL;
+	temp2 = head2;
+	trans = head1;
+
+	while (head1->next != NULL)
+	{
+		while (trans != temp2)
+		{
+			if ((trans->data) > (trans->next->data))
+			{
+				temp = trans->data;
+				trans->data = trans->next->data;
+				trans->next->data = temp;
+			}
+			trans = trans->next;
+		}
+		temp2 = temp2->prev;
+		trans = head1;
+		head1 = head1->next;
+	}
+}
+void insertion_sort(struct node* head1, struct node* head2)
+{
+	int empty;
+	struct node* trans = NULL;
+
+	head1 = head1->next;
+	while (head1 != NULL)
+	{
+		empty = head1->data;
+		trans = head1->prev;
+		while (trans != NULL && (trans->data) > empty)
+		{
+			trans->next->data = trans->data;
+			trans->data = empty;
+			trans = trans->prev;
+		}
+		head1 = head1->next;
+	}
+}
+void main()
+{
+	int ch;
+	struct node* first = NULL;
+	struct node* last = NULL;
+	do
+	{
+		printf("1. create list list\n");
+		printf("2. display link list forword\n");
+		printf("3. display link list reverse\n");
+		printf("4. find numbre\n");
+		printf("5. insert at first\n");
+		printf("6. insert at last\n");
+		printf("7. insert at position\n");
+		printf(" 8. delete at first\n");
+		printf("9. delete at last\n");
+		printf("10. delete at position\n");
+		printf("11. swap next and prev\n");
+		printf("12. sort using bubble sort\n");
+		printf("13. sort using insertion sort\n");
+		printf("0. exit\n");
+		printf("Entre your choice\n");
+		scanf_s("%d", &ch);
+
+		switch (ch)
+		{
+		case 1: create_link_list(&first, &last);
+			break;
+		case 2: display_forword(first);
+			break;
+		case 3: display_reverse(last);
+			break;
+		case 4: find(first, last);
+			break;
+		case 5: insert_first(&first, &last);
+			break;
+		case 6: insert_last(&first, &last);
+			break;
+		case 7: insert_pos(&first, &last);
+			break;
+		case 8: delete_first(&first, &last);
+			break;
+		case 9: delete_last(&first, &last);
+			break;
+		case 10: delete_pos(&first, &last);
+			break;
+		case 11: swap(&first, &last);
+			break;
+		case 12: bubble_sort(first, last);
+			break;
+		case 13: insertion_sort(first, last);
+			break;
+		case 0: exit(0);
+
+		default: printf(" please entre the valid choise\n");
+			break;
+		}
+	} while (ch != 0);
+}
