@@ -1,0 +1,97 @@
+//03)write c program to create linked list of n nodes and print the list in reverse order.
+#include< stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+};
+struct node* createnode()
+{
+	int a;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf("memory is not allocated");
+		return (NULL);
+	}
+	else
+	{
+		printf("enter the data");
+		scanf_s("%d", &a);
+		newnode->data = a;
+		newnode->next = NULL;
+		return newnode;
+	}
+} void createlinkedlist(struct node** head)
+{
+	struct node* tempnode = NULL;
+	struct node* travnode = *head;
+	tempnode = createnode();
+	if (*head == NULL)
+	{
+		*head = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		} travnode->next =
+			tempnode;
+	}
+} void reverse(struct node** head)
+{
+	struct node* prev = NULL;
+	struct node* next = NULL;
+	struct node* current = *head;
+	while (current != NULL)
+	{
+		next = current->next;//store next.
+		current->next = prev;//revese current node.
+		prev = current;//move pointer position.
+		current = next;
+	}
+	*head = prev;
+} void displaylinkedlist(struct node* head)
+{
+	if (head == NULL)
+	{
+		printf("linked list is empty");
+	}
+	else
+	{
+		while (head != NULL)
+		{
+			printf("%d ", head->data);
+			head = head->next;
+		}
+	}
+} void main()
+{
+	struct node* frst = NULL;
+	int ch;
+	do
+	{
+		printf("\n1.create Linked List\n");
+		printf("2.reverse Linked List\n");
+		printf("3.display Linked List\n");
+		printf("0.exit Linked List\n");
+		printf("enter your choice");
+		scanf_s("%d", &ch);
+		switch (ch)
+		{
+		case 1:createlinkedlist(&frst);
+			break;
+		case 2:reverse(&frst);
+			break;
+		case 3:displaylinkedlist(frst);
+			break;
+		case 0:exit(0);
+			break;
+		default:
+			printf("enter valid choice");
+		}
+	} while (ch != 0);
+}
