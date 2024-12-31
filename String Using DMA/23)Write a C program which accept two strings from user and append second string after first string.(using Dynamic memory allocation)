@@ -1,0 +1,46 @@
+//23)Write a C program which accept two strings from user and append second string after first string.(using Dynamic memory allocation)
+Eg:
+Input String: India Country
+Output String: IndiaCountry
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int n;
+	int i = 0, size = 1;
+	char ch;
+	printf("enter no:");
+	scanf_s("%d", &n);
+	char* str1;
+	str1 = (char*)malloc(sizeof(char));
+	*str1 = '\0';
+	printf("enter the string");
+	do
+	{
+		scanf_s("%c", &ch);
+		if (ch != '\n')
+		{
+			size++;
+			str1 = (char*)realloc(str1, size * sizeof(char));
+			*(str1 + i) = ch;
+			*(str1 + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	*(str1 + i + 1) = " ";
+	printf("enter string2:");
+	do
+	{
+		scanf_s("%c", &ch);
+		if (ch != '\n')
+		{
+			size++;
+			str1 = (char*)realloc(str1, size * sizeof(char));
+			*(str1 + i) = ch;
+			*(str1 + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	printf("%s", str1);
+}
