@@ -1,0 +1,125 @@
+//08)write a c program to sort first half linked list in Ascending and half descending order.
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node* next;
+};
+struct node* createnode()
+{
+	int a;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf("Memeory not allocated");
+	}
+	else
+	{
+		printf("Enter data:");
+		scanf_s("%d", &a);
+		newnode->data = a;
+		newnode->next = NULL;
+		return newnode;
+	}
+} void createlinkedlist(struct node** head)
+{
+	struct node* tempnode = NULL;
+	struct node* travnode = *head;
+	tempnode = createnode();
+	if (*head == NULL)
+	{
+		*head = tempnode;
+	}
+	else
+	{
+		while (travnode->next != NULL)
+		{
+			travnode = travnode->next;
+		} travnode->next =
+			tempnode;
+	}
+} void display(struct node* head)
+{
+	if (head == NULL)
+	{
+		printf("Linked list is not available");
+	}
+	else
+	{
+		while (head != NULL)
+		{
+			printf("%d ", head->data);
+			head = head->next;
+		}
+	}
+} int countnode(struct node* head)
+{
+	int count = 0;
+	while (head != NULL)
+	{
+		count++;
+		head = head->next;
+	}
+	return count;
+} void sortlist(struct node* head)
+{
+	int a, n, i = 0, j = 0;
+	struct node* temp1 = head;
+	struct node* temp2 = temp1->next;
+	n = countnode(head);
+	for (i = 0; i < n - 1; i++)
+	{
+		temp1 = head;
+		temp2 = temp1->next;
+		for (j = 1; j < n / 2; j++)
+		{
+			if (temp1->data > temp2->data)
+			{
+				a = temp1->data;
+				temp1->data = temp2->data;
+				temp2->data = a;
+			} 
+			temp1 =temp1->next;
+			temp2 = temp1->next;
+		} for (j=n/2; j<n; j++)
+		{
+			if (temp1->data < temp2->data)
+			{
+				a = temp2->data;
+				temp2->data = temp1->data;
+				temp1->data = a;
+			} temp1 =temp1->next;
+			temp2 = temp1->next;
+		}
+	}
+}
+int main()
+{
+	struct node* frst = NULL;
+	int choice;
+	do
+	{
+		printf("\n1.Create Linked list\n");
+		printf("2.Display\n");
+		printf("3.Sort linked list\n");
+		printf("0.exit\n");
+		printf("\nEnter choice:");
+		scanf_s("%d", &choice);
+		switch (choice)
+		{
+		case 1:createlinkedlist(&frst);
+			break;
+		case 2:display(frst);
+			break;
+		case 3:sortlist(frst);
+			break;
+		case 0:exit(0);
+			break;
+		default:
+			printf("Invalid choice");
+		}
+	} while (choice != 0);
+	return 0;
+}
