@@ -1,0 +1,48 @@
+//29)Write a C program which accept string from user and then accept range and reverse the string in that range without taking another string. (using Dynamic memory allocation)
+Eg:
+Input String: India is my country
+Input of N1: 3
+Input of N1: 9
+Output String: Indm si aicountry
+Ans:
+#include<stdio.h> 
+#include<stdlib.h> 
+void main() {
+
+	int size = 1; char* str = NULL; char ch;
+	str = (char*)malloc(sizeof(char));
+	*str = '\0'; int i = 0;
+	printf("enter a string1 : ");
+
+	do
+	{
+		scanf_s("%c", &ch);
+		str = (char*)realloc(str, size * sizeof(char));
+		*(str + i) = ch;
+		*(str + i + 1) = '\0'; i++;
+		size++;
+	} while (ch != '\n');
+
+	int n1, n2, j = 0; i = 0;
+	printf("N1 : ");
+	scanf_s("%d", &n1);
+	printf("N2 : ");
+	scanf_s("%d", &n2);
+
+	while (i < n1)
+	{
+		printf("%c", *(str + i)); i++;
+	}
+
+	for (j = n2; j >= n1; j--)
+	{
+		printf("%c", *(str + j));
+	}
+	i = n2 + 1;
+	while (*(str + i) != '\n' && *(str + i) != '\0')
+	{
+		printf("%c", *(str + i));
+
+		i++;
+	}
+}
