@@ -1,0 +1,77 @@
+//26)Write a C program which accept two strings from user and compare only first N characters of two strings. If both strings are equal till first N characters then return 0 otherwise return difference between first mismatch character. (using Dynamic memory allocation)
+Eg:
+Input String1: Ramayan
+ Input String2:Ramanacharya
+Input of N: 4
+Output: Both strings are equal.
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+    int t, k, b, flag = 0;
+    int i = 0;
+    int size = 2;
+    char ch;
+    char* str = NULL;
+    str = (char*)malloc(sizeof(char));
+    *str = '\0';
+    printf("enter 1 string");
+    do {
+        scanf_s("%c", &ch);
+        if (ch != '\n')
+        {
+            size++;
+            str = (char*)realloc(str, size * sizeof(char));
+            *(str + i) = ch;
+            *(str + i + 1) = '\n';
+            *(str + i + 2) = '\0';
+            i++;
+        }
+    } while (ch != '\n');
+
+    i = 0;
+    size = 2;
+    char ch2;
+    char* str2 = NULL;
+    str2 = (char*)malloc(sizeof(char));
+    *str2 = '\0';
+    printf("enter 2 string");
+    do {
+        scanf_s("%c", &ch2);
+        if (ch2 != '\n')
+        {
+            size++;
+            str2 = (char*)realloc(str2, size * sizeof(char));
+            *(str2 + i) = ch2;
+            *(str2 + i + 1) = '\n';
+            *(str2 + i + 2) = '\0';
+            i++;
+        }
+    } while (ch2 != '\n');
+    printf("enter range upto which do you want continue");
+    scanf_s("%d", &b);
+
+    for (t = 0; *(str + t) != '\0'; t++)
+    {
+        if (t == b)
+            break;
+        if (*(str + t) == *(str2 + t))
+        {
+            flag = 0;
+        }
+        else
+        {
+            flag = 1;
+            break;
+        }
+    }
+
+    if (flag == 0)
+    {
+        printf("strings are equal ");
+
+    }
+    else
+        printf(" strings are not equal and differnce is %d ", *(str)-*(str2));
+}
