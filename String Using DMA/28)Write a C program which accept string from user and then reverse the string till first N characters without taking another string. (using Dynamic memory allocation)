@@ -1,0 +1,48 @@
+//28)Write a C program which accept string from user and then reverse the string till first N characters without taking another string. (using Dynamic memory allocation)
+Eg:
+Input String: India is my country
+Input of N: 8
+Output : m si aidnIy country
+Ans:
+#include<stdio.h> 
+#include<stdlib.h> 
+void main() 
+{
+
+int size = 1; char* str = NULL; char ch;
+str = (char*)malloc(sizeof(char));
+*str = '\0'; int i = 0;
+printf("enter a string1 : "); do
+{
+	scanf_s("%c", &ch);
+	str = (char*)realloc(str, size * sizeof(char));
+	*(str + i) = ch;
+	*(str + i + 1) = '\0'; i++;
+	size++;
+} while (ch != '\n');
+
+
+int n, j = 0; i = 0;
+printf("N : ");
+scanf_s("%d", &n);
+while (*(str + i) != '\n' && *(str + i) != '\0')
+{
+	while (i < n)
+	{
+		if (*(str + i) == ' ')
+
+		{
+
+			n++;
+		} i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		printf("%c", *(str + j));
+	}
+	while (*(str + i) != '\n' && *(str + i) != '\0')
+	{
+		printf("%c", *(str + i)); i++;
+	}
+    }
+}
