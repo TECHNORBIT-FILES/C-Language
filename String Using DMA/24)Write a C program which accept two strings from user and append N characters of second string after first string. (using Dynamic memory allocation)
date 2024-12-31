@@ -1,0 +1,49 @@
+//24)Write a C program which accept two strings from user and append N characters of second string after first string. (using Dynamic memory allocation)
+Eg:
+Input String: India Country
+Input of N: 4
+Output String: IndiaCoun
+Ans:
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	int i = 0, size = 1, n = 0, c = 0;
+	char ch;
+	char* str1;
+	str1 = (char*)malloc(sizeof(char));
+	*str1 = '\0';
+	printf("enter the string");
+	do
+	{
+		scanf_s("%c", &ch);
+		if (ch != '\n')
+		{
+			size++;
+			str1 = (char*)realloc(str1, size * sizeof(char));
+			*(str1 + i) = ch;
+			*(str1 + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	c = i;
+	printf("enter the second string");
+	do
+	{
+		scanf_s("%c", &ch);
+		if (ch != '\n')
+		{
+			size++;
+			str1 = (char*)realloc(str1, size * sizeof(char));
+			*(str1 + i) = ch;
+			*(str1 + i + 1) = '\0';
+			i++;
+		}
+	} while (ch != '\n');
+	printf("enter the number");
+	scanf_s("%d", &n);
+	for (i = 0; i < c + n; i++)
+	{
+		printf("%c", *(str1 + i));
+	}
+}
