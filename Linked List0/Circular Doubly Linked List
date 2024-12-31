@@ -1,0 +1,155 @@
+//Circular Doubly Linked List
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node
+{
+	struct node* next;
+	int data;
+	struct node* prev;
+};
+struct node* createnode()
+{
+	int value;
+	struct node* newnode = NULL;
+	newnode = (struct node*)malloc(sizeof(struct node));
+	if (newnode == NULL)
+	{
+		printf("Memory not allocated.\n");
+	}
+	else
+	{
+		printf("Enter value\n");
+		scanf_s("%d", &value);
+		newnode->data = value;
+		newnode->next = NULL;
+		newnode->prev = NULL;
+	}
+	return newnode;
+}
+
+void createlinkedlist(struct node** head, struct node** tail)
+{
+	struct node* newnode = NULL;
+	newnode = createnode();
+	if (*head == NULL)
+	{
+		*head = newnode;
+		*tail = newnode;
+		(*head)->next = newnode;
+		(*tail)->prev = newnode;
+	}
+	else
+	{
+		newnode->next = (*tail)->next;
+		newnode->prev = *tail;
+		(*head)->prev = newnode;
+		(*tail)->next = newnode;
+		*tail = newnode;
+	}
+}
+void insertatfirst(struct node** head, struct node** tail)
+{
+	struct node* newnode = NULL;
+	if (*head == NULL)
+	{
+		createlinkedlist(head, tail);
+	}
+	else
+	{
+		newnode = createnode();
+		newnode->next = (*tail)->next;
+		newnode->prev = *tail;
+		(*head)->prev = newnode;
+		(*tail)->next = newnode;
+	}
+}
+int countnode(struct node* tail)
+{
+	struct node* tempnode = tail;
+	int count = 0;
+	do
+	{
+		tempnode = tempnode->next;
+		count++;
+	} while (tempnode->data != tail->data);
+	return count;
+}
+void insertatpos(struct node** head, struct node** tail)
+{
+	int pos, n, i;
+	struct node* tempnode = (*tail)->next;
+	struct node* newnode = NULL;
+	n = countnode(*tail);
+
+	printf("Enter the position\n");
+	scanf_s("%d", &pos);
+	if (pos == 1)
+	{
+		insertatfirst(head, tail);
+	}
+	else if (pos == n + 1)
+	{
+		createlinkedlist(head, tail);
+	}
+	else if (pos < 1 && pos >(n + 1))
+	{
+		printf("Invalid posiiton\n");
+		insertatpos(head, tail);
+	}
+	else
+	{
+		newnode = createnode();
+		for (i = 1; i < pos - 1; i++)
+		{
+			tempnode = tempnode->next;
+		}
+		newnode->next = tempnode->next;
+		newnode->prev = tempnode;
+		tempnode->next->prev = newnode;
+		tempnode->next = newnode;
+	}
+}
+void displaylinkedlist(struct node* tail)
+{
+	struct node* tempnode = tail;
+	do
+	{
+		tempnode = tempnode->next;
+		printf("%d -> ", tempnode->data);
+	} while (tempnode->data != tail->data);
+}
+void main()
+{
+	int choice;
+	struct node* first = NULL;
+	struct node* last = NULL;
+	do
+	{
+		printf("\n1. create linked list\n");
+		printf("2. display linked list\n");
+		printf("3. Insert newnode at first \n");
+		printf("4. insert newnode at last \n");
+		printf("5. Insert newnode at any position\n");
+		printf("Enter choice\n");
+		scanf_s("%d", &choice);
+
+		switch (choice)
+		{
+		case 1:createlinkedlist(&first, &last);
+			break;
+		case 2: displaylinkedlist(last);
+			break;
+		case 3: insertatfirst(&first, &last);
+			break;
+		case 4: createlinkedlist(&first, &last);
+			break;
+		case 5: insertatpos(&first, &last);
+			break;
+		default: printf("Invalid choice\n");
+			break;
+		}
+	} while (choice != 0);
+}
+
